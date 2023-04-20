@@ -11,7 +11,7 @@ class Hangman:
         self.num_lives = num_lives
         self.word_list = word_list
         self.list_of_guesses = []
-
+        
     '''
     The check_guess method :
      > checks whether the guess is correct.
@@ -48,6 +48,7 @@ class Hangman:
             else:
                 self.check_guess(guess) 
                 self.list_of_guesses.append(guess)
+                print(f'{self.word_guessed}')
                 break
                      
     '''
@@ -58,14 +59,14 @@ class Hangman:
         self.num_lives = 5
         while True:
             
-            if self.num_lives > 0 and self.num_letters == 0:
+            if self.num_lives == 0:
+               print('You have lost !')
+               break  
+            elif self.word_guessed == list(self.word):
                 print('Conratulations. You have won the game !')
-                break   
-            elif self.num_letters > 0 and self.num_lives > 0:
-                self.ask_for_input()
+                break 
             else:
-                print('You have lost !')
-                break
+                self.ask_for_input()
                  
             
                
